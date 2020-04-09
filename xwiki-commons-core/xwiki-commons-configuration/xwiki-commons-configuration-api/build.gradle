@@ -22,5 +22,5 @@
 
 dependencies {
     compile project(':xwiki-component-api')
-    compile 'commons-beanutils:commons-beanutils:1.9.3'
+    compile 'commons-beanutils:commons-beanutils:1.9.4'
 }
