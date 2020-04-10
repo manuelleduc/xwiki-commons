@@ -21,7 +21,7 @@
 // WARNING: NOT WORKING, WORK IN PROGRESS. USE THE MAVEN BUILD WHICH IS THE XWIKI OFFICIAL BUILD TOOL.
 
 ext {
-    junit4Version = '4.12'
+    junit4Version = '4.13'
     junit5Version = '5.2.0'
     slf4jVersion =  '1.7.25'
     commonsLang3Version = '3.7'
