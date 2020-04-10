@@ -22,7 +22,7 @@
 
 ext {
     junit4Version = '4.12'
-    junit5Version = '5.2.0'
+    junit5Version = '5.6.2'
     slf4jVersion =  '1.7.25'
     commonsLang3Version = '3.7'
     mockitoVersion= '2.18.3'
