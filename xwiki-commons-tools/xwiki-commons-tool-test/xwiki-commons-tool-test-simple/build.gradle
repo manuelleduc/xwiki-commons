@@ -26,7 +26,7 @@ dependencies {
     compile "org.slf4j:slf4j-api:${slf4jVersion}"
     compile 'ch.qos.logback:logback-classic:1.2.3'
     compile 'commons-io:commons-io:2.5'
-    compile('org.jmock:jmock-junit4:2.6.0') {
+    compile('org.jmock:jmock-junit4:2.12.0') {
         // junit-dep is deprecated and junit should be used instead
         exclude(group: 'junit', module: 'junit-dep')
     }
