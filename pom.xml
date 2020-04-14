@@ -116,7 +116,7 @@
     <checkstyle.version>8.31</checkstyle.version>
 
     <!-- Spoon -->
-    <spoon.version>7.5.0</spoon.version>
+    <spoon.version>7.6.0</spoon.version>
 
     <!-- Groovy -->
     <groovy.version>2.5.10</groovy.version>
