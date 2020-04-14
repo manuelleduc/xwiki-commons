@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
+/*
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.
  *
@@ -18,24 +16,28 @@
  * License along with this software; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
--->
+ */
+package org.xwiki.tool.spoon.junit5junit4;
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.xwiki.commons</groupId>
-    <artifactId>xwiki-commons-tool-pom</artifactId>
-    <version>12.3-SNAPSHOT</version>
-    <relativePath>../xwiki-commons-tool-pom</relativePath>
-  </parent>
-  <artifactId>xwiki-commons-tool-test</artifactId>
-  <name>XWiki Commons - Tools - Test Framework - Parent POM</name>
-  <packaging>pom</packaging>
-  <description>XWiki Test framework</description>
-  <modules>
-    <!-- Sorted Alphabetically -->
-    <module>xwiki-commons-tool-test-component</module>
-    <module>xwiki-commons-tool-test-simple</module>
-  </modules>
-</project>
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+/**
+ * Test class for {@code JUnit5Junit4Processor}.
+ *
+ * @version $Id$
+ */
+public class BadTest1
+{
+    @BeforeEach
+    void setup()
+    {
+        // Empty
+    }
+
+    @Test
+    public void test()
+    {
+        // Empty
+    }
+}
