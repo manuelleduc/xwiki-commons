@@ -1,11 +1,5 @@
 {
   "extends": [
     "config:base"
-  ],
-  "packageRules": [
-    {
-      "packageNames": ["xstream"],
-      "allowedVersions": "/\\d+\\.\\d+\\.\\d+/"
-    }
   ]
 }
