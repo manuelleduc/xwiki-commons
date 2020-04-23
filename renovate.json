@@ -3,9 +3,6 @@
 		"config:base"
 	],
 	"packageRules": [{
-		"packageNames": ["xstream"],
-		"allowedVersions": "/\\d+\\.\\d+\\.\\d+/"
-	}, {
 		"managers": ["maven"],
 		"registryUrls": ["http://nexus.xwiki.org/nexus/content/groups/public"]
 	}],
