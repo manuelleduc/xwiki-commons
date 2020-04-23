@@ -20,13 +20,12 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.xwiki.commons</groupId>
     <artifactId>xwiki-commons</artifactId>
-    <version>12.3-SNAPSHOT</version>
+    <version>12.4-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-commons-pom</artifactId>
   <name>XWiki Commons - Root POM</name>
@@ -73,12 +72,12 @@
       <plugin>
         <groupId>org.xwiki.commons</groupId>
         <artifactId>xwiki-commons-tool-remote-resource-plugin</artifactId>
-        <version>12.3-SNAPSHOT</version>
+        <version>12.4-SNAPSHOT</version>
         <dependencies>
           <dependency>
             <groupId>org.xwiki.commons</groupId>
             <artifactId>xwiki-commons-tool-license-resources</artifactId>
-            <version>12.3-SNAPSHOT</version>
+            <version>12.4-SNAPSHOT</version>
           </dependency>
         </dependencies>
         <executions>
@@ -104,7 +103,7 @@
           <dependency>
             <groupId>org.xwiki.commons</groupId>
             <artifactId>xwiki-commons-tool-enforcer-dependencies</artifactId>
-            <version>12.3-SNAPSHOT</version>
+            <version>12.4-SNAPSHOT</version>
           </dependency>
         </dependencies>
         <executions>
@@ -134,7 +133,7 @@
             <configuration>
               <skip>${xwiki.enforcer.valid-poms.skip}</skip>
               <rules>
-                <externalExtensionCheck implementation="org.xwiki.tool.enforcer.ExternalExtensionCheck"/>
+                <externalExtensionCheck implementation="org.xwiki.tool.enforcer.ExternalExtensionCheck" />
               </rules>
             </configuration>
           </execution>
@@ -148,7 +147,7 @@
           <dependency>
             <groupId>org.xwiki.commons</groupId>
             <artifactId>xwiki-commons-tool-verification-resources</artifactId>
-            <version>12.3-SNAPSHOT</version>
+            <version>12.4-SNAPSHOT</version>
           </dependency>
         </dependencies>
         <configuration>
@@ -198,12 +197,10 @@
                 <processorProperty>
                   <name>org.xwiki.tool.spoon.ComponentAnnotationProcessor</name>
                   <properties>
-                    <!-- TODO: Remove when Spoon is fixed and doesn't emit the following warning when this property is not
-                         specified:
+                    <!-- TODO: Remove when Spoon is fixed and doesn't emit the following warning when this property is
+                         not specified:
                            warning: No value found for property 'componentsTxtPath' in processor ...
-                           org.xwiki.tool.spoon.JUnit5JUnit4Processor
-                           end of processing:
-                           1 warning
+                         See https://github.com/INRIA/spoon/issues/3339
                     -->
                     <property>
                       <name>componentsTxtPath</name>
@@ -243,7 +240,7 @@
           <dependency>
             <groupId>org.xwiki.commons</groupId>
             <artifactId>xwiki-commons-tool-spoon-checks</artifactId>
-            <version>12.3-SNAPSHOT</version>
+            <version>12.4-SNAPSHOT</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -259,7 +256,7 @@
             <dependency>
               <groupId>org.xwiki.commons</groupId>
               <artifactId>xwiki-commons-tool-verification-resources</artifactId>
-              <version>12.3-SNAPSHOT</version>
+              <version>12.4-SNAPSHOT</version>
             </dependency>
           </dependencies>
           <configuration>
@@ -342,7 +339,7 @@
             <dependency>
               <groupId>org.xwiki.commons</groupId>
               <artifactId>xwiki-commons-tool-verification-resources</artifactId>
-              <version>12.3-SNAPSHOT</version>
+              <version>12.4-SNAPSHOT</version>
             </dependency>
           </dependencies>
           <executions>
@@ -356,18 +353,10 @@
         <plugin>
           <groupId>org.xwiki.commons</groupId>
           <artifactId>xwiki-commons-tool-xar-plugin</artifactId>
-          <version>12.3-SNAPSHOT</version>
+          <version>12.4-SNAPSHOT</version>
           <configuration>
             <!-- Add missing license headers by default -->
             <formatLicense>true</formatLicense>
-            <!-- Consider all pages named *Translations as content pages (since they have translations) but also
-                 as Technical pages since they need to be hidden. -->
-            <contentPages>
-              <contentPage>.*/.*Translations\.xml</contentPage>
-            </contentPages>
-            <technicalPages>
-              <technicalPage>.*/.*Translations\.xml</technicalPage>
-            </technicalPages>
             <titles>
               <!-- Verify that all WebPreferences pages have the same title for consistency -->
               <property>
@@ -387,7 +376,7 @@
             <dependency>
               <groupId>org.xwiki.commons</groupId>
               <artifactId>xwiki-commons-tool-archiver</artifactId>
-              <version>12.3-SNAPSHOT</version>
+              <version>12.4-SNAPSHOT</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -399,7 +388,7 @@
             <dependency>
               <groupId>org.xwiki.commons</groupId>
               <artifactId>xwiki-commons-tool-archiver</artifactId>
-              <version>12.3-SNAPSHOT</version>
+              <version>12.4-SNAPSHOT</version>
             </dependency>
           </dependencies>
         </plugin>
