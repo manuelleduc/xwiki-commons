@@ -28,7 +28,7 @@ ext {
     commonsLang3Version = '3.10'
     commonsIoVersion = '2.6'
     mockitoVersion= '3.3.3'
-    logbackVersion = '1.2.3'
+    logbackVersion = '1.2.11'
 }
 
 allprojects {
