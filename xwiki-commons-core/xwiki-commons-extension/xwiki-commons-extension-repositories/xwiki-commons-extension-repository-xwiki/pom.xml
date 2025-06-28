@@ -57,9 +57,9 @@
     </dependency>
     <!-- Test dependencies -->
     <dependency>
-      <groupId>com.github.tomakehurst</groupId>
+      <groupId>org.wiremock</groupId>
       <artifactId>wiremock</artifactId>
-      <version>1.54</version>
+      <version>3.0.1</version>
       <scope>test</scope>
       <exclusions>
         <!-- We are using SLF4J -->
