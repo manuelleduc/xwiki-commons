@@ -59,8 +59,8 @@ class JavascriptImportmapParserTest
                 "moduleB": "org.xwiki.jsB/path2.js"
             }""");
         assertEquals(Map.of(
-            "moduleA", new WebjarPathDescriptor("org.xwiki.js", "path.js"),
-            "moduleB", new WebjarPathDescriptor("org.xwiki.jsB", "path2.js")
+            "moduleA", new ImportmapPathDescriptor("org.xwiki.js", "path.js", false),
+            "moduleB", new ImportmapPathDescriptor("org.xwiki.jsB", "path2.js", false)
         ), parsed);
     }
 
@@ -118,7 +118,7 @@ class JavascriptImportmapParserTest
               }
             }""");
         assertEquals(Map.of(
-            "moduleA", new WebjarPathDescriptor("org.xwiki.js", "s1", "path.js")
+            "moduleA", new ImportmapPathDescriptor("org.xwiki.js", "s1", "path.js", Map.of(), false)
         ), parsed);
     }
 
@@ -137,7 +137,58 @@ class JavascriptImportmapParserTest
               }
             }""");
         assertEquals(Map.of(
-            "moduleA", new WebjarPathDescriptor("org.xwiki.js", "s1", "path.js", Map.of("key", "value"))
+            "moduleA", new ImportmapPathDescriptor("org.xwiki.js", "s1", "path.js", Map.of("key", "value"), false)
         ), parsed);
     }
+
+    @Test
+    void parseWithEagerLoading() throws Exception
+    {
+        var parsed = this.parser.parse("""
+            {
+              "moduleA": {
+                "webjarId": "org.xwiki.js",
+                "path": "path.js",
+                "eager": true
+              }
+            }""");
+        assertEquals(Map.of(
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true)
+        ), parsed);
+    }
+
+    @Test
+    void parseWithAnonymousLoading() throws Exception
+    {
+        var parsed = this.parser.parse("""
+            {
+              "moduleA": {
+                "webjarId": "org.xwiki.js",
+                "path": "path.js",
+                "anonymous": true
+              }
+            }""");
+        assertEquals(Map.of(
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true)
+        ), parsed);
+    }
+
+    @Test
+    void parseWithEagerAndAnonymousLoading() throws Exception
+    {
+        var parsed = this.parser.parse("""
+            {
+              "moduleA": {
+                "webjarId": "org.xwiki.js",
+                "path": "path.js",
+                "eager": true,
+                "anonymous": true
+              }
+            }""");
+        assertEquals(Map.of(
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true)
+        ), parsed);
+    }
+
+    // TODO: missing tests with ! and _
 }
