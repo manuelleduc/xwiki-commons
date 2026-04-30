@@ -87,7 +87,8 @@ class JavascriptImportmapParserTest
               }
             }""");
         assertEquals(Map.of(
-            "moduleA", new WebjarPathDescriptor("org.xwiki.js", "path.js", Map.of("key", "value"))
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js", Map.of("key",
+                "value")))
         ), parsed);
     }
 
@@ -169,7 +170,7 @@ class JavascriptImportmapParserTest
               }
             }""");
         assertEquals(Map.of(
-            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true)
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), false, true)
         ), parsed);
     }
 
@@ -186,9 +187,45 @@ class JavascriptImportmapParserTest
               }
             }""");
         assertEquals(Map.of(
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true, true)
+        ), parsed);
+    }
+
+
+    @Test
+    void parseWithAnonymousShortSyntax() throws Exception
+    {
+        var parsed = this.parser.parse("""
+            {
+              "_moduleA": "org.xwiki.js/path.js"
+            }""");
+        assertEquals(Map.of(
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), false, true)
+        ), parsed);
+    }
+
+    @Test
+    void parseWithEagerLoadingShortSyntax() throws Exception
+    {
+        var parsed = this.parser.parse("""
+            {
+              "moduleA": "!org.xwiki.js/path.js"
+            }""");
+        assertEquals(Map.of(
             "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true)
         ), parsed);
     }
 
-    // TODO: missing tests with ! and _
+
+    @Test
+    void parseWithEagerAndAnonymousLoadingShortSyntax() throws Exception
+    {
+        var parsed = this.parser.parse("""
+            {
+              "_moduleA": "!org.xwiki.js/path.js"
+            }""");
+        assertEquals(Map.of(
+            "moduleA", new ImportmapPathDescriptor(new WebjarPathDescriptor("org.xwiki.js", "path.js"), true, true)
+        ), parsed);
+    }
 }

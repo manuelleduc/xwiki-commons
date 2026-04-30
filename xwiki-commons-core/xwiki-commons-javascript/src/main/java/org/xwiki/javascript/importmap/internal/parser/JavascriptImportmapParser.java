@@ -85,34 +85,26 @@ public class JavascriptImportmapParser
                         webjarPathDescriptor, eager, anonymous);
                     extensionImportMap.put(key, importmapPathDescriptor);
                 } else {
-                    extensionImportMap.put(key, parseValue(String.valueOf(value)));
+                    var anonymous = key.startsWith("_");
+                    extensionImportMap.put(anonymous ? key.substring(1) : key, parseValue(String.valueOf(value),
+                        anonymous));
                 }
             }
         }
         return extensionImportMap;
     }
 
-    private ImportmapPathDescriptor parseValue(String value) throws JavascriptImportmapException
+    private ImportmapPathDescriptor parseValue(String value, boolean anonymous) throws JavascriptImportmapException
     {
         var separator = "/";
         if (!value.contains(separator)) {
             throw new JavascriptImportmapException("Invalid importmap value: %s".formatted(value));
         }
-        var split = value.split(separator, 2);
+        var eager = value.startsWith("!");
+        var split = (eager ? value.substring(1) : value).split(separator, 2);
         var webjarId = split[0];
         var path = split[1];
 
-        var eager = false;
-        var anonymous = false;
-        if (split[0].startsWith("_")) {
-            anonymous = true;
-            webjarId = split[0].substring(1);
-        }
-
-        if (split[1].startsWith("!")) {
-            eager = true;
-            path = split[1].substring(1);
-        }
         return new ImportmapPathDescriptor(new WebjarPathDescriptor(webjarId, path), eager, anonymous);
     }
 }

@@ -31,7 +31,7 @@ import org.xwiki.webjars.WebjarPathDescriptor;
  * @param eager whether the module should be eagerly loaded
  * @param anonymous whether the module should be loaded anonymously
  * @version $Id$
- * @since 18.0.0RC1
+ * @since 18.4.0RC1
  */
 public record ImportmapPathDescriptor(WebjarPathDescriptor descriptor, boolean eager, boolean anonymous)
 {
